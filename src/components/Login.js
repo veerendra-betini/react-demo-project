@@ -63,6 +63,9 @@ class Login extends React.Component {
             <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
           </p>
           <button id="submit" value="Submit">Login</button>
+          <p>
+            New User? <a href="#/signup">Singup</a> Now
+          </p>
         </form>
       </div>
     )
