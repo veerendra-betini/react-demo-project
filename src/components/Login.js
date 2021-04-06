@@ -62,6 +62,10 @@ class Login extends React.Component {
               onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} />
             <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
           </p>
+
+          <h4>
+            Logging in as : {this.state.fields["userName"]}
+          </h4>
           <button id="submit" value="Submit">Login</button>
           <p>
             New User? <a href="#/signup">Singup</a> Now
