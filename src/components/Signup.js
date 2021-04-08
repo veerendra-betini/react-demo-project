@@ -2,19 +2,10 @@ import React, { Component, useState} from "react";
 
 //Using hooks
 function Signup() {
-  const [fields, setSignupData] = useState({
-    firstName: 'Veerendra', dob: '', email: '',
-    confirmEmail: '', phoneNumber: ''
-  });
+  const [fields, setSignupData] = useState({firstName: 'Veerendra', dob: '', email: '', confirmEmail: '', phoneNumber: ''});
 
-  const errors = {};
-
-  function signupData(e) {
-    setSignupData({ ...fields, [e.target.name]: e.target.value });
-    if (!fields["email"]) {
-      errors.email = 'Email can not be empty!';
-      alert(errors.email);
-    }
+  function changeSignupData(e) {
+    setSignupData({...fields, [e.target.name]: e.target.value });
   }
     
   return (
@@ -23,29 +14,29 @@ function Signup() {
       <form name="contactform">
         <p>
           <label>FirstName : </label>
-          <input name="firstName" type="text" value={fields.firstName} onChange={signupData}></input>
+          <input name="firstName" type="text" value={fields.firstName} onChange={changeSignupData}></input>
         </p>
         <p>
           <label>Date Of Birth : </label>
-          <input name="dob" type="text" value={fields.dob} onChange={signupData}></input>
+          <input name="dob" type="text" value={fields.dob} onChange={changeSignupData}></input>
         </p>
         <p>
           <label>Email : </label>
-          <input name="email" type="text" value={fields.email} onBlur={signupData}></input> //TODO
-          <span>{errors["email"]}</span>
+          <input name="email" type="text" value={fields.email} onChange={changeSignupData}></input>
         </p>
         <p>
           <label>Confirm Email : </label>
-          <input name="confirmEmail" type="text" value={fields.confirmEmail} onChange={signupData}></input>
+          <input name="confirmEmail" type="text" value={fields.confirmEmail} onChange={changeSignupData}></input>
         </p>
         <p>
           <label>Phone Number : </label>
-          <input name="phoneNumber" type="text" value={fields.phoneNumber} onChange={signupData}></input>
+          <input name="phoneNumber" type="text" value={fields.phoneNumber} onChange={changeSignupData}></input>
         </p>
        
         <button id="submit" value="Submit">Signup</button>
+        
         <p>
-          Suginup Details : {fields["firstName"]}, {fields["dob"]} //Todo
+          Signup details: {fields.firstName}, {fields.dob}
         </p>
       </form>
     </div>

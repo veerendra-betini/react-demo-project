@@ -20,10 +20,10 @@ class Login extends React.Component {
       errors["userName"] = "UserName Cannot be empty";
     }
 
-    //password
-    if (!fields["password"]) {
+    //password in diff way
+    if (!fields.password) {
       formIsValid = false;
-      errors["password"] = "Password Cannot be empty";
+      errors.password = "Password Cannot be empty";
     }
 
     this.setState({ errors: errors });
@@ -33,7 +33,7 @@ class Login extends React.Component {
   contactSubmit(e) {
     e.preventDefault();
     if (this.handleValidation()) {
-      alert("Form submitted");
+      alert("Login form submitted");
     } else {
       //alert("Form has errors.")
     }
@@ -61,6 +61,8 @@ class Login extends React.Component {
             <input refs="password" type="text" size="30" placeholder="Password"
               onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} />
             <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
+
+            &nbsp;<a style={{ textDecoration: 'none' }}  href="#/forgotPassword">ForgotPassword</a>          
           </p>
 
           <h4>
@@ -68,7 +70,7 @@ class Login extends React.Component {
           </h4>
           <button id="submit" value="Submit">Login</button>
           <p>
-            New User? <a href="#/signup">Singup</a> Now
+            New User? <a style={{ textDecoration: 'none' }} href="#/signup">Singup</a> Now
           </p>
         </form>
       </div>
