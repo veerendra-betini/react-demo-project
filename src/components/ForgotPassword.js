@@ -1,32 +1,31 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { Component, useState } from "react";
 
-export default function ForgotPassword() {
-  const { register, formState: { errors }, handleSubmit } = useForm();
+function ForgotPassword() {
+  const [fields, setSignupData] = useState({ userName: '', dob: '11/22/1944' });
 
-  const onSubmit = (formData) => {
-    alert(JSON.stringify(formData))
-  };
+  function changeSignupData(e) {
+    setSignupData({ ...fields, [e.target.name]: e.target.value });
+  }
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <h2> Forgot Password </h2>
+      <form name="contactform">
         <p>
-          <label>Last Name: </label>
-          <input type="text" name="lastName" {...register("lastName", { required: true })} />
-          {errors.lastName && <span style={{ color: "red" }}> Last Name is required.</span>}
+          <label>UserName: </label>
+          <input name="userName" type="text" value={fields.userName} onChange={changeSignupData}></input>
+        </p>
+        <p>
+          <label>Date Of Birth: </label>
+          <input name="dob" type="date" value={fields.dob} onChange={changeSignupData}></input>
         </p>
 
+        <button id="submit" value="Submit">Continue</button>
         <p>
-          <label>Email: </label>
-          <input type="text" name="email" {...register("email", { required: true })} />
-          {errors.email && <span style={{ color: "red" }}> Email is required.</span>}
-        </p>
-
-        <p>
-          <button type="submit">Continue</button>
+          User details: {fields.userName}, {fields.dob}
         </p>
       </form>
     </div>
-  );
+  )
 }
+export default ForgotPassword;
