@@ -31,11 +31,13 @@ class Login extends React.Component {
   }
 
   contactSubmit(e) {
+          //TODO: send user name to forgot pwd
+
     e.preventDefault();
     if (this.handleValidation()) {
-      alert("Login form submitted");
+      alert("Login form submitted"+ JSON.stringify(this.state.fields));
     } else {
-      //alert("Form has errors.")
+        //alert("Form has errors.")
     }
   }
 
@@ -59,10 +61,10 @@ class Login extends React.Component {
           <p>
             <label>Password : </label>
             <input refs="password" type="text" size="30" placeholder="Password"
-              onChange={this.handleChange.bind(this, "password")} value={this.state.fields["password"]} />
+              onChange={this.handleChange.bind(this, "password")} value={this.state.fields.password} />
             <span style={{ color: "red" }}>{this.state.errors["password"]}</span>
 
-            &nbsp;<a style={{ textDecoration: 'none' }}  href="#/forgotPassword">ForgotPassword</a>          
+            &nbsp;<a style={{ textDecoration: 'none' }}  href={"#/forgotPassword/"+this.state.fields["userName"]} >ForgotPassword</a>          
           </p>
 
           <h4>

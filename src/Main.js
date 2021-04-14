@@ -22,7 +22,7 @@ class Main extends Component {
                             </Route>
                             <Route path="/login" component={Login} ></Route>
                             <Route path="/signup" component={Signup} />
-                            <Route path="/forgotPassword" component={ForgotPassword} />
+                            <Route path="/forgotPassword/:loginUser" component={ForgotPassword} />
                         </Switch>
                     </div>
                 </div>
